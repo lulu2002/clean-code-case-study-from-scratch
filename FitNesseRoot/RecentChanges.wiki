@@ -1,8 +1,8 @@
+|CleanCoders.EpisodeOnePresentCodeCasts.ScenarioLibrary||19:22:26 Sat, Jul 01, 2023|
+|CleanCoders.EpisodeOnePresentCodeCasts.PresentNoCodeCasts||19:21:39 Sat, Jul 01, 2023|
 |CleanCoders||16:45:32 Sat, Jul 01, 2023|
-|CleanCoders.EpisodeOnePresentCodeCasts.ScenarioLibrary||16:31:25 Sat, Jul 01, 2023|
 |CleanCoders.SetUp||16:20:59 Sat, Jul 01, 2023|
 |CleanCoders.Setup||15:46:55 Sat, Jul 01, 2023|
-|CleanCoders.EpisodeOnePresentCodeCasts.PresentNoCodeCasts||15:45:52 Sat, Jul 01, 2023|
 |CleanCoders.EpisodeOnePresentCodeCasts||15:38:50 Sat, Jul 01, 2023|
 |FrontPage.Hello||15:36:58 Sat, Jul 01, 2023|
 |FrontPage.CleanCoders||15:36:39 Sat, Jul 01, 2023|

@@ -1,3 +1,5 @@
 !define TEST_SYSTEM {slim}
-!path build/classes/java/test
+!path build/classes/kotlin/test
+!path build/classes/kotlin/main
+!path lib/*.jar
 !contents

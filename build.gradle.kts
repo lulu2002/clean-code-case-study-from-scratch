@@ -12,6 +12,8 @@ repositories {
 
 dependencies {
     testImplementation(kotlin("test"))
+    implementation(kotlin("stdlib-jdk8"))
+    implementation("com.google.inject:guice:5.1.0")
 }
 
 tasks.test {

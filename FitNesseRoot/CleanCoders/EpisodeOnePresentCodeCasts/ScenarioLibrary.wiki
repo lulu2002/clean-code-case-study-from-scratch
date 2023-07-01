@@ -14,3 +14,6 @@
 
 |scenario|there will be no codecasts presented|
 |check   |count of codecasts presented|0      |
+
+|scenario|given user _|user|
+|add user|@user|
