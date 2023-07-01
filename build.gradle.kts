@@ -1,6 +1,6 @@
 plugins {
+    id("com.github.johnrengelman.shadow") version "7.0.0"
     kotlin("jvm") version "1.8.0"
-    application
 }
 
 group = "me.lulu"
@@ -22,8 +22,4 @@ tasks.test {
 
 kotlin {
     jvmToolchain(8)
-}
-
-application {
-    mainClass.set("MainKt")
 }
