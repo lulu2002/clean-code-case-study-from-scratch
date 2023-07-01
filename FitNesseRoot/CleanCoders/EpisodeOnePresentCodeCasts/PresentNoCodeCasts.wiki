@@ -1,0 +1,10 @@
+---
+Help: Present No Code Casts
+Test
+---
+
+-!|script                                            |
+|given no codecasts                                  |
+|with user U logged in                               |
+|then the following codecasts will be presented for U|
+|there will be no codecasts presented                |
