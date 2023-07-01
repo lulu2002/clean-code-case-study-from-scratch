@@ -1,32 +1,32 @@
 package me.lulu.cleancodecasestudy.fixtures
 
-import me.lulu.cleancodecasestudy.Context
-import me.lulu.cleancodecasestudy.GateKeeper
-import me.lulu.cleancodecasestudy.GatewayMock
-import me.lulu.cleancodecasestudy.User
+import me.lulu.cleancodecasestudy.*
 
 class CodecastPresentation {
 
     private val gateKeeper = GateKeeper()
     private val useCase = PresentCodecastUseCase()
-
-    init {
-        Context.gateway = GatewayMock()
-    }
+    private val gateway = testContext.getInstance(Gateway::class.java)
 
     fun loginUser(username: String): Boolean {
-        val user = Context.gateway.findUserByName(username) ?: return false
+        val user = gateway.findUserByName(username) ?: return false
         gateKeeper.loggedInUser = user
         return true
     }
 
     fun addUser(username: String): Boolean {
-        Context.gateway.saveUser(User(username))
+        gateway.saveUser(User(username))
         return true
     }
 
-    fun createLicenseForViewing(user: String, codecast: String): Boolean {
-        return false
+    fun createLicenseForViewing(userName: String, codecastName: String): Boolean {
+        val user = gateway.findUserByName(userName) ?: return false
+        val codecast = gateway.findCodecastByTitle(codecastName) ?: return false
+        val license = License(user, codecast)
+
+        gateway.saveLicense(license)
+
+        return useCase.isLicensedToViewCodecast(user, codecast)
     }
 
     fun presentationUser(): String {
@@ -34,7 +34,6 @@ class CodecastPresentation {
     }
 
     fun clearCodecasts(): Boolean {
-        val gateway = Context.gateway
         gateway.findAllCodecasts().forEach { gateway.deleteCodecast(it) }
 
         return gateway.findAllCodecasts().isEmpty()

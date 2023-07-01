@@ -24,4 +24,12 @@ class GatewayMock : Gateway {
     override fun findUserByName(username: String): User? {
         return users.find { it.name == username }
     }
+
+    override fun findCodecastByTitle(name: String): Codecast? {
+        TODO("Not yet implemented")
+    }
+
+    override fun saveLicense(license: License) {
+        TODO("Not yet implemented")
+    }
 }

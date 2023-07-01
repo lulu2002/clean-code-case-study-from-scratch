@@ -1,7 +1,7 @@
 package me.lulu.cleancodecasestudy.fixtures
 
 import me.lulu.cleancodecasestudy.Codecast
-import me.lulu.cleancodecasestudy.Context
+import me.lulu.cleancodecasestudy.Gateway
 
 class GivenCodecasts {
     private var title: String = ""
@@ -17,6 +17,6 @@ class GivenCodecasts {
 
     fun execute() {
         val codecast = Codecast(title, publicationDate)
-        Context.gateway.saveCodecast(codecast)
+        testContext.getInstance(Gateway::class.java).saveCodecast(codecast)
     }
 }
