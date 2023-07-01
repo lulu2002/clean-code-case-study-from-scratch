@@ -20,4 +20,8 @@ class GatewayMock : Gateway {
     override fun saveUser(user: User) {
         users.add(user)
     }
+
+    override fun findUserByName(username: String): User? {
+        return users.find { it.name == username }
+    }
 }

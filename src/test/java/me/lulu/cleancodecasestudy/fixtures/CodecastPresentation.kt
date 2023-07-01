@@ -1,17 +1,23 @@
 package me.lulu.cleancodecasestudy.fixtures
 
 import me.lulu.cleancodecasestudy.Context
+import me.lulu.cleancodecasestudy.GateKeeper
 import me.lulu.cleancodecasestudy.GatewayMock
 import me.lulu.cleancodecasestudy.User
 
 class CodecastPresentation {
+
+    private val gateKeeper = GateKeeper()
+    private val useCase = PresentCodecastUseCase()
 
     init {
         Context.gateway = GatewayMock()
     }
 
     fun loginUser(username: String): Boolean {
-        return false
+        val user = Context.gateway.findUserByName(username) ?: return false
+        gateKeeper.loggedInUser = user
+        return true
     }
 
     fun addUser(username: String): Boolean {
@@ -24,7 +30,7 @@ class CodecastPresentation {
     }
 
     fun presentationUser(): String {
-        return "TILT"
+        return gateKeeper.loggedInUser?.name ?: ""
     }
 
     fun clearCodecasts(): Boolean {
@@ -35,6 +41,6 @@ class CodecastPresentation {
     }
 
     fun countOfCodecastsPresented(): Int {
-        return -1
+        return useCase.listCodecastsByUser(gateKeeper.loggedInUser!!).size
     }
 }

@@ -1,5 +1,5 @@
 package me.lulu.cleancodecasestudy
 
 data class User(
-    private val name: String
+    val name: String
 )

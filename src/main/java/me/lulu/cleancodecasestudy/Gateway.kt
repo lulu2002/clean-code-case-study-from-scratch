@@ -5,4 +5,5 @@ interface Gateway {
     fun deleteCodecast(codecast: Codecast)
     fun saveCodecast(codecast: Codecast)
     fun saveUser(user: User)
+    fun findUserByName(username: String): User?
 }
