@@ -18,6 +18,8 @@ dependencies {
     implementation(kotlin("stdlib-jdk8"))
     implementation("com.google.inject:guice:5.1.0")
 
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1")
+
     testImplementation("io.cucumber:cucumber-java")
     testImplementation("io.cucumber:cucumber-guice")
     testImplementation("io.cucumber:cucumber-junit-platform-engine")
