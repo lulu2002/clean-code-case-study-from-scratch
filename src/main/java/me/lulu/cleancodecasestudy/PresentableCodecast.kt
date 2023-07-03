@@ -1,5 +1,7 @@
 package me.lulu.cleancodecasestudy
 
-class PresentableCodecast {
-
-}
+data class PresentableCodecast(
+    val title: String,
+    val publicationDate: String,
+    val viewable: Boolean
+)

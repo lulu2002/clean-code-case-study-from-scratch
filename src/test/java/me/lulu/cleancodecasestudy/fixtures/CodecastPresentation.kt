@@ -1,12 +1,13 @@
 package me.lulu.cleancodecasestudy.fixtures
 
 import me.lulu.cleancodecasestudy.*
+import java.util.UUID
 
 class CodecastPresentation {
 
     private val gateKeeper = GateKeeper()
-    private val useCase = PresentCodecastUseCase()
     private val gateway = testContext.getInstance(Gateway::class.java)
+    private val useCase = PresentCodecastUseCase(gateway)
 
     fun loginUser(username: String): Boolean {
         val user = gateway.findUserByName(username) ?: return false
@@ -15,7 +16,7 @@ class CodecastPresentation {
     }
 
     fun addUser(username: String): Boolean {
-        gateway.saveUser(User(username))
+        gateway.saveUser(User(UUID.randomUUID().toString(), username))
         return true
     }
 

@@ -4,6 +4,7 @@ class GatewayMock : Gateway {
 
     private val codecasts = mutableListOf<Codecast>()
     private val users = mutableListOf<User>()
+    private val licenses = mutableListOf<License>()
 
     override fun findAllCodecasts(): List<Codecast> {
         return codecasts.toList()
@@ -22,14 +23,18 @@ class GatewayMock : Gateway {
     }
 
     override fun findUserByName(username: String): User? {
-        return users.find { it.name == username }
+        return users.find { it.name == username }?.copy()
     }
 
     override fun findCodecastByTitle(name: String): Codecast? {
-        TODO("Not yet implemented")
+        return codecasts.find { it.title == name }?.copy()
     }
 
     override fun saveLicense(license: License) {
-        TODO("Not yet implemented")
+        licenses.add(license)
+    }
+
+    override fun findAllLicensesForUser(user: User): Collection<License> {
+        return licenses.filter { it.user == user }.map { it.copy() }
     }
 }

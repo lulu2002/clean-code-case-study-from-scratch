@@ -8,4 +8,5 @@ interface Gateway {
     fun findUserByName(username: String): User?
     fun findCodecastByTitle(name: String): Codecast?
     fun saveLicense(license: License)
+    fun findAllLicensesForUser(user: User): Collection<License>
 }

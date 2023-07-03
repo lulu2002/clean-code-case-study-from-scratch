@@ -1,4 +1,0 @@
-!define TEST_SYSTEM {slim}
-!path build/libs/*-all.jar
-!path build/classes/kotlin/test
-!contents

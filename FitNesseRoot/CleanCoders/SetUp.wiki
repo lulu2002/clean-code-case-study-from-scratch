@@ -1,7 +1,0 @@
-!contents -R2 -g -p -f -h
-
-|import|
-|me.lulu.cleancodecasestudy.fixtures|
-
-|library|
-|codecast presentation|
