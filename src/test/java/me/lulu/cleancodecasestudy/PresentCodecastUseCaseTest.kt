@@ -24,23 +24,28 @@ class PresentCodecastUseCaseTest {
         codecast = Codecast("title", SimpleDateFormat("yyyy-MM-dd").parse("2022-12-20"))
     }
 
-    @Test
-    fun `should return false if user without license`() {
-        assertFalse(useCase.isLicensedToViewCodecast(user, codecast))
-    }
+    @Nested
+    inner class IsLicensedToCodecast {
 
-    @Test
-    fun `should return true if user is licensed`() {
-        gateway.saveLicense(License(user, codecast))
-        assertTrue(useCase.isLicensedToViewCodecast(user, codecast))
-    }
+        @Test
+        fun `should return false if user without license`() {
+            assertFalse(useCase.isLicensedToCodecast(user, codecast, LicenseType.VIEWABLE))
+        }
 
-    @Test
-    fun `should not be able to view others codecast`() {
-        val anotherUser = User("anotherId", "user")
-        gateway.saveLicense(License(anotherUser, codecast))
+        @Test
+        fun `should return true if user is licensed`() {
+            gateway.saveLicense(License(user, codecast, listOf(LicenseType.VIEWABLE)))
+            assertTrue(useCase.isLicensedToCodecast(user, codecast, LicenseType.VIEWABLE))
+        }
 
-        assertFalse(useCase.isLicensedToViewCodecast(user, codecast))
+        @Test
+        fun `should not be able to view others codecast`() {
+            val anotherUser = User("anotherId", "user")
+            gateway.saveLicense(License(anotherUser, codecast, listOf(LicenseType.VIEWABLE)))
+
+            assertFalse(useCase.isLicensedToCodecast(user, codecast, LicenseType.VIEWABLE))
+        }
+
     }
 
 
@@ -65,7 +70,7 @@ class PresentCodecastUseCaseTest {
         @Test
         fun `should return codecast with viewable`() {
             gateway.saveCodecast(codecast)
-            gateway.saveLicense(License(user, codecast))
+            gateway.saveLicense(License(user, codecast, listOf(LicenseType.VIEWABLE)))
 
             assertEquals(
                 listOf(presentableCodecast(true)),

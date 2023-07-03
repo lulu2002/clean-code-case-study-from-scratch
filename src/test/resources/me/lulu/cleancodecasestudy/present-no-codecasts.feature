@@ -13,7 +13,7 @@ Feature: Present Codecasts
     And user "U" logged in
     Then there will be no codecasts presented for "U"
 
-  Scenario: Present Viewable Codecasts Sorted By Published Date
+  Scenario: Present Viewable or Downloadable Codecasts Sorted By Published Date
     Given codecasts:
       | title | published |
       | A     | 6/30/2023 |
@@ -23,8 +23,9 @@ Feature: Present Codecasts
     Given user "U"
     And user "U" logged in
     And license for "U" to view "A"
+    And license for "U" to download "B"
     Then there will be codecasts presented for "U":
       | title | publication date | picture | description | viewable | downloadable |
       | C     | 2023-06-29       | C       | C           | -        | -            |
       | A     | 2023-06-30       | A       | A           | +        | -            |
-      | B     | 2023-07-01       | B       | B           | -        | -            |
+      | B     | 2023-07-01       | B       | B           | -        | +            |

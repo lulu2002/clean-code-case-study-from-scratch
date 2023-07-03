@@ -47,7 +47,20 @@ class CodecastsSteps {
     fun licenseForUserToViewCodecast(username: String, codecastTitle: String) {
         val user = gateway.findUserByName(username) ?: error("User not found")
         val codecast = gateway.findCodecastByTitle(codecastTitle) ?: error("Codecast not found")
-        val license = License(user, codecast)
+        val license = License(user, codecast, listOf(LicenseType.VIEWABLE))
+
+        gateway.saveLicense(license)
+    }
+
+    @And("license for {string} to download {string}")
+    fun licenseForUserToDownloadCodecast(username: String, codecastTitle: String) {
+        createAndSaveLicense(username, codecastTitle, listOf(LicenseType.DOWNLOADABLE))
+    }
+
+    private fun createAndSaveLicense(username: String, codecastTitle: String, flags: List<LicenseType>) {
+        val user = gateway.findUserByName(username) ?: error("User not found")
+        val codecast = gateway.findCodecastByTitle(codecastTitle) ?: error("Codecast not found")
+        val license = License(user, codecast, flags)
 
         gateway.saveLicense(license)
     }
@@ -68,7 +81,7 @@ class CodecastsSteps {
             assertEquals(it["publication date"], codecast.publicationDate)
 //            assertTrue { codecast.picture == it["picture"] }
 //            assertTrue { codecast.description == it["description"] }
-            assertTrue { codecast.viewable == (it["viewable"] == "+") }
+            assertEquals(codecast.viewable, it["viewable"] == "+")
 //            assertTrue { codecast.downloadable == (it["downloadable"] == "+") }
         }
     }

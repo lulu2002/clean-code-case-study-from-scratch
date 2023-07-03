@@ -1,6 +1,7 @@
 package me.lulu.cleancodecasestudy.codecast
 
 import me.lulu.cleancodecasestudy.Codecast
+import me.lulu.cleancodecasestudy.LicenseType
 import me.lulu.cleancodecasestudy.User
 import me.lulu.cleancodecasestudy.license.FindAllLicensesForUser
 import java.text.SimpleDateFormat
@@ -20,13 +21,15 @@ class PresentCodecastUseCase(
                 PresentableCodecast(
                     title = codecast.title,
                     publicationDate = dateFormat.format(codecast.publicationDate),
-                    viewable = allLicenses.any { it.codecast == codecast }
+                    viewable = allLicenses.any { it.codecast == codecast && it.types.contains(LicenseType.VIEWABLE) }
                 )
             }
     }
 
-    fun isLicensedToViewCodecast(user: User, codecast: Codecast): Boolean {
-        return findAllLicensesForUser.findAllLicensesForUser(user).any { it.codecast == codecast }
+    fun isLicensedToCodecast(user: User, codecast: Codecast, flag: LicenseType): Boolean {
+        return findAllLicensesForUser.findAllLicensesForUser(user).any {
+            it.codecast == codecast && it.types.contains(flag)
+        }
     }
 
 }
