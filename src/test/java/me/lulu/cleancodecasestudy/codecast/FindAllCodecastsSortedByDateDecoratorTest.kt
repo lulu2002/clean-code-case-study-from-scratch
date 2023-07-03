@@ -1,7 +1,7 @@
 package me.lulu.cleancodecasestudy.codecast
 
 import me.lulu.cleancodecasestudy.Codecast
-import me.lulu.cleancodecasestudy.FindAllCodecastsStub
+import me.lulu.cleancodecasestudy.doubles.FindAllCodecastsStub
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import java.util.*

@@ -3,8 +3,8 @@ package me.lulu.cleancodecasestudy
 import me.lulu.cleancodecasestudy.codecast.CodecastGateway
 import me.lulu.cleancodecasestudy.codecast.PresentCodecastUseCase
 import me.lulu.cleancodecasestudy.codecast.PresentableCodecast
-import me.lulu.cleancodecasestudy.db.CodecastGatewayInMemory
-import me.lulu.cleancodecasestudy.db.LicenseGatewayInMemory
+import me.lulu.cleancodecasestudy.doubles.CodecastGatewayInMemory
+import me.lulu.cleancodecasestudy.doubles.LicenseGatewayInMemory
 import me.lulu.cleancodecasestudy.license.LicenseGateway
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach

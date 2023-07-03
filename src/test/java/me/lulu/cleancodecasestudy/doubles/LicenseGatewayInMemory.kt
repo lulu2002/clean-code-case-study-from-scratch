@@ -1,4 +1,4 @@
-package me.lulu.cleancodecasestudy.db
+package me.lulu.cleancodecasestudy.doubles
 
 import me.lulu.cleancodecasestudy.License
 import me.lulu.cleancodecasestudy.license.LicenseGateway
