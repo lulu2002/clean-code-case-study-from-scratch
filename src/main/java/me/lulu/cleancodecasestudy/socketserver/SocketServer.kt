@@ -3,7 +3,7 @@ package me.lulu.cleancodecasestudy.socketserver
 import kotlinx.coroutines.*
 import java.net.ServerSocket
 
-class SocketServer(val port: Int, private val service: SocketService) {
+class SocketServer(port: Int, private val service: SocketService) {
     private var running = false
     private var job: Job? = null
     private var socketInstance: ServerSocket = ServerSocket(port)
