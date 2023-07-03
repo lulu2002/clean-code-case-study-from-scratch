@@ -21,7 +21,8 @@ class PresentCodecastUseCase(
                 PresentableCodecast(
                     title = codecast.title,
                     publicationDate = dateFormat.format(codecast.publicationDate),
-                    viewable = allLicenses.any { it.codecast == codecast && it.types.contains(LicenseType.VIEWABLE) }
+                    viewable = allLicenses.any { it.codecast == codecast && it.types.contains(LicenseType.VIEWABLE) },
+                    downloadable = allLicenses.any { it.codecast == codecast && it.types.contains(LicenseType.DOWNLOADABLE) }
                 )
             }
     }
