@@ -24,9 +24,7 @@ Feature: Present Codecasts
     And user "U" logged in
     And license for "U" to view "A"
     Then there will be codecasts presented for "U":
-      | title | picture | description | viewable | downloadable |
-      | C     | C       | C           | -        | -            |
-      | A     | A       | A           | +        | -            |
-      | B     | B       | B           | -        | -            |
-
-
+      | title | publication date | picture | description | viewable | downloadable |
+      | C     | 2023-06-29       | C       | C           | -        | -            |
+      | A     | 2023-06-30       | A       | A           | +        | -            |
+      | B     | 2023-07-01       | B       | B           | -        | -            |

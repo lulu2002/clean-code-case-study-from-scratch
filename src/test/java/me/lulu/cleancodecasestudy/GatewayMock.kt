@@ -34,7 +34,7 @@ class GatewayMock : Gateway {
         licenses.add(license)
     }
 
-    override fun findAllLicensesForUser(user: User): Collection<License> {
+    override fun findAllLicensesForUser(user: User): List<License> {
         return licenses.filter { it.user == user }.map { it.copy() }
     }
 }

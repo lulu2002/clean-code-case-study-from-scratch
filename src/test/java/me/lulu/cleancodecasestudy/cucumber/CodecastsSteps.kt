@@ -5,7 +5,7 @@ import io.cucumber.java.en.And
 import io.cucumber.java.en.Given
 import io.cucumber.java.en.Then
 import me.lulu.cleancodecasestudy.*
-import me.lulu.cleancodecasestudy.fixtures.testContext
+import me.lulu.cleancodecasestudy.codecast.PresentCodecastUseCase
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.test.assertEquals
@@ -14,8 +14,8 @@ import kotlin.test.assertTrue
 class CodecastsSteps {
 
     private val gateKeeper = GateKeeper()
+    private val useCase = testContext.getInstance(PresentCodecastUseCase::class.java)
     private val gateway = testContext.getInstance(Gateway::class.java)
-    private val useCase = PresentCodecastUseCase(gateway)
     private val dateFormat = SimpleDateFormat("MM/dd/yyyy")
 
     @Given("codecasts:")
@@ -65,6 +65,7 @@ class CodecastsSteps {
         table.asMaps().forEachIndexed { index, it ->
             val codecast = codecasts.get(index)
             assertEquals(it["title"], codecast.title)
+            assertEquals(it["publication date"], codecast.publicationDate)
 //            assertTrue { codecast.picture == it["picture"] }
 //            assertTrue { codecast.description == it["description"] }
             assertTrue { codecast.viewable == (it["viewable"] == "+") }

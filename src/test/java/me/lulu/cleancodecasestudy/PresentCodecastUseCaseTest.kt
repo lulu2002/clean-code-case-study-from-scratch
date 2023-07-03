@@ -1,12 +1,12 @@
 package me.lulu.cleancodecasestudy
 
+import me.lulu.cleancodecasestudy.codecast.PresentCodecastUseCase
+import me.lulu.cleancodecasestudy.codecast.PresentableCodecast
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import java.text.SimpleDateFormat
-import java.time.LocalDate
-import java.util.Date
 
 class PresentCodecastUseCaseTest {
 
@@ -18,7 +18,7 @@ class PresentCodecastUseCaseTest {
     @BeforeEach
     fun setup() {
         gateway = GatewayMock()
-        useCase = PresentCodecastUseCase(gateway)
+        useCase = PresentCodecastUseCase(gateway, gateway)
 
         user = User("id", "user")
         codecast = Codecast("title", SimpleDateFormat("yyyy-MM-dd").parse("2022-12-20"))

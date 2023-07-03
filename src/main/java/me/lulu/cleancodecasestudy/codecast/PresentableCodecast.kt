@@ -1,4 +1,4 @@
-package me.lulu.cleancodecasestudy
+package me.lulu.cleancodecasestudy.codecast
 
 data class PresentableCodecast(
     val title: String,
