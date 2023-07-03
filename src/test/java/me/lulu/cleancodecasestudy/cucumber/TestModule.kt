@@ -61,7 +61,3 @@ class TestModule : AbstractModule() {
         )
     }
 }
-
-val testContext = Guice.createInjector(
-    TestModule()
-)

@@ -19,6 +19,7 @@ dependencies {
     implementation("com.google.inject:guice:5.1.0")
 
     testImplementation("io.cucumber:cucumber-java")
+    testImplementation("io.cucumber:cucumber-guice")
     testImplementation("io.cucumber:cucumber-junit-platform-engine")
     testImplementation("org.junit.platform:junit-platform-suite")
     testImplementation("org.junit.jupiter:junit-jupiter")

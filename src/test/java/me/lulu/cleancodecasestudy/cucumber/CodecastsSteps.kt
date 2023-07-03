@@ -1,28 +1,30 @@
 package me.lulu.cleancodecasestudy.cucumber
 
+import com.google.inject.Inject
 import io.cucumber.datatable.DataTable
+import io.cucumber.guice.ScenarioScoped
 import io.cucumber.java.en.And
 import io.cucumber.java.en.Given
 import io.cucumber.java.en.Then
 import me.lulu.cleancodecasestudy.*
 import me.lulu.cleancodecasestudy.codecast.CodecastGateway
 import me.lulu.cleancodecasestudy.codecast.PresentCodecastUseCase
-import me.lulu.cleancodecasestudy.License
 import me.lulu.cleancodecasestudy.license.LicenseGateway
-import me.lulu.cleancodecasestudy.LicenseType
 import me.lulu.cleancodecasestudy.user.UserGateway
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
-class CodecastsSteps {
+@ScenarioScoped
+class CodecastsSteps @Inject constructor(
+    private val useCase: PresentCodecastUseCase,
+    private val licenseGateway: LicenseGateway,
+    private val codecastGateway: CodecastGateway,
+    private val userGateway: UserGateway,
+) {
 
     private val gateKeeper = GateKeeper()
-    private val useCase = testContext.getInstance(PresentCodecastUseCase::class.java)
-    private val licenseGateway = testContext.getInstance(LicenseGateway::class.java)
-    private val codecastGateway = testContext.getInstance(CodecastGateway::class.java)
-    private val userGateway = testContext.getInstance(UserGateway::class.java)
     private val dateFormat = SimpleDateFormat("MM/dd/yyyy")
 
     @Given("codecasts:")
